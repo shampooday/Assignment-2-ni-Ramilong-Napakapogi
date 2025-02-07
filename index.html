@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>MJ's Website</title>
+  <link rel="shortcut icon" href="mylogoname.png" type="image/x-icon">  
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">My Website.</a>
+      <button id="mobile-menu" class="menu-toggle" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#aboutme">About</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+      <li><a href="#crushiieq">Crushiie</a></li>
+    </ul>
+  </nav>
+
+  <div class="container" id="aboutme">
+    <div class="card">
+      <img src="me.png" alt="Card Image">
+      <h2>Mark Jayson D. Ramilo</h2>
+      <p>Hello I'm Mark Jaysom D. Ramilo, a BSIT second year college student who has the characteristic of being prudent and kind to others and I am one of the most reliable when it comes to things and I am willing to help those in need of help.</p>
+    </div>
+    <div class="card" id="hobbies">
+      <img src="singing.png" alt="Card Image">
+      <h2>Hobbies</h2>
+      <p>I know that singing can be called a talent, but for me it is also a hobby, because I love singing so much, I do it wherever I like and I also do it when I take a shower, clean the house, and even washing the dishes.</p>
+    </div>
+    <div class="card" id="crushiieq">
+      <img src="andrea.png" alt="Card Image">
+      <h2>Crushiie</h2>
+      <p>I am in awe of her beauty, and not not only because of her captivating eyes and radiant smile but also because of her remarkable achievements. At such a young age, she managed to build a home of her own, claim her own land, and even having her own cars.</p>
+    </div>
+  </div>
+  <style>
+
+    /* For smoother scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* My Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #333;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 999;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 1rem 0;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu-toggle .bar {
+        display: block;
+        width: 24px;
+        height: 3px;
+        background-color: white;
+        margin: 4px auto;
+      }
+    }
+
+    @media (max-width: 522px) {
+      .card {
+        width: 100%;
+      }
+    }
+  </style>
+  
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Toggle mobile menu visibility
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Smooth scroll and collapse menu after clicking links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default jump
+
+        const targetId = link.getAttribute('href');
+        
+        if (targetId === '#home') {
+          // Scroll to the top for Home
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+        
+          // Scroll to the target section
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+        
+        // Collapse menu after navigation
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
